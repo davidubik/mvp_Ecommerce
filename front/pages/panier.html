@@ -4,73 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Panier</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <header>
         <nav class="nav nav-pills nav-fill">
             <a class="nav-link" href="../index.html">Home</a>
-            <a class="nav-link" href="panier.html">Produits</a>
             <a class="nav-link" href="#">Panier</a>
             <a class="nav-link" href="confirmation.html">Confirmation de commande</a>
           </nav>
     </header>
         <main>
-            <form class="needs-validation" novalidate>
-                <div class="form-row">
-                  <div class="col-md-3 mb-3">
-                    <label for="validationTooltip01">Nom</label>
-                    <input type="text" class="form-control" id="validationTooltip01" value="" required>
-                    <div class="valid-tooltip">
-                      Looks good!
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-3">
-                    <label for="validationTooltip02">Prénom</label>
-                    <input type="text" class="form-control" id="validationTooltip02" value="" required>
-                    <div class="valid-tooltip">
-                      Looks good!
-                    </div>
-                  </div>
-                </div>
-                <div class="form-row">
-                  <div class="col-md-3 mb-3">
-                    <label for="validationTooltip03">Ville</label>
-                    <input type="text" class="form-control" id="validationTooltip03" required>
-                    <div class="invalid-tooltip">
-                      Please provide a valid city.
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-3">
-                    <label for="validationTooltip04">Département</label>
-                      <select  class="custom-select" name="ville" id="ville-select">
-                          <option value="ain">01	Ain</option>
-                          <option value="aisne">02	Aisne</option>
-                          <option value="allier">03	Allier</option>
-                          <option value="hautes-alpes">05	Hautes-Alpes</option>
-                          <option value="alpes-maritimes">06	Alpes-Maritimes</option>
-                          <option value="ardeche">07	Ardèche</option>
-                          <option value="ardennes">08	Ardennes</option>
-                      </select>
-                    <div class="invalid-tooltip">
-                      Please select a valid state.
-                    </div>
-                  </div>
-                  <div class="col-md-3 mb-3">
-                    <label for="validationTooltip05">Code Postal</label>
-                    <input type="text" class="form-control" id="validationTooltip05" required>
-                    <div class="invalid-tooltip">
-                      Please provide a valid zip.
-                    </div>
-                  </div>
-                </div>
-                <button type="button" class="btn btn-primary btn-sm">Envoyer</button>
-              </form>        
-        </main>
+            <form>
+              <div>
+                  <label for="name">Nom :</label>
+                  <input type="text" id="name" name="user_name">
+              </div>
+              <div>
+                <label for="prenom">Prénom :</label>
+                <input type="text" id="prenom" name="user_name">
+            </div>
+              <div>
+                  <label for="mail">e-mail :</label>
+                  <input type="email" id="mail" name="user_mail">
+              </div>
+              <div>
+                  <label for="adresse">Adresse :</label>
+                <input type="text">
+              </div>
+              <input type="submit" value="Envoyer"/>
+          </form>      
+      </main>
+
+        <footer>
+          <p>
+              contact
+          </p>
+          <p>
+              mentions légales
+          </p>
+      </footer>
 
     <script src="../js/script.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
