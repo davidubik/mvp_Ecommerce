@@ -36,7 +36,7 @@ window.onload = function(){
         if(this.readyState === XMLHttpRequest.DONE){
             if(this.status === 200){
                 const response = (JSON.parse(this.responseText));
-                for(i = 0; i < 10; i++){
+                for(i = 0; i < image.length; i++){
                     console.log(response[i].url);
                     const image = document.createElement('img');
                     image.src = response[i].url;
