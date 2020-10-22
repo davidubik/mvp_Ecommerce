@@ -27,8 +27,8 @@
 window.onload = function(){
 
     const req = new XMLHttpRequest();
-    // const method = "GET";
-    const url = "​http://localhost:3000/api/cam";
+     const method = "GET";
+    const url = "​http://localhost:3000/api/cameras";
     
     req.open("GET", url);
     
@@ -41,6 +41,7 @@ window.onload = function(){
                     const image = document.createElement('img');
                     image.src = response[i].url;
                     document.body.appendChild(image);
+                    console.log(response[i]);
                 }
             } else{
                 console.log("Statut: " + this.status);
@@ -51,6 +52,7 @@ window.onload = function(){
     
     req.send();
 
+ 
 }
 
 
