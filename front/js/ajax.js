@@ -8,21 +8,34 @@ window.onload = function(){
     req.onreadystatechange = function(e){
         if(this.readyState === XMLHttpRequest.DONE){
             if(this.status === 200){
-                const response = (JSON.parse(this.responseText));
+                const response = JSON.parse(this.responseText);
                 for(i = 0; i < response.length; i++){
                     console.log(response[i].imageUrl);
-                    const image = document.createElement('img');
-                    const model = document.createElement('p');
-                    const prix = document.createElement('p');
-                    const definition = document.createElement('p');
-                    definition.textContent = response[i].description;
-                    prix.textContent = response[i].price;
+
+                    const camera = document.createElement("div");
+                    camera.classList.add("camera");
+
+                    const model = document.createElement("h3");
                     model.textContent = response[i].name;
+
+                    const definition = document.createElement("p");
+                    definition.textContent = response[i].description;
+
+                    const prix = document.createElement("p");
+                    prix.textContent = response[i].price;
+
+                    const image = document.createElement("img");
                     image.src = response[i].imageUrl;
-                    document.querySelector('.image-container').appendChild(image);
-                    document.querySelector(".section1").appendChild(model);
-                    document.querySelector(".section1").appendChild(prix);
-                    document.querySelector(".section1").appendChild(definition);
+
+
+                    camera.appendChild(image);
+                    camera.appendChild(model);
+                    camera.appendChild(definition);
+                    camera.appendChild(prix);
+
+
+                   document.querySelector(".items-container").appendChild(camera);
+                   
                     console.log(response[i]);
                     console.log(response[i].name);
                 }
