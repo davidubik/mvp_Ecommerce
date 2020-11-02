@@ -15,14 +15,18 @@ window.onload = function(){
                     const camera = document.createElement("div");
                     camera.classList.add("camera");
 
-                    const model = document.createElement("h3");
+                    const model = document.createElement("a");
                     model.textContent = response[i].name;
+                    model.style.fontSize = '2em';
+                    model.style.textDecoration ='none';
+                    model.style.color = '#000';
+                    model.href = "http://localhost:3000/images/vcam_1.jpg";
 
                     const definition = document.createElement("p");
                     definition.textContent = response[i].description;
 
                     const prix = document.createElement("p");
-                    prix.textContent = response[i].price;
+                    prix.textContent = response[i].price + "€";
 
                     const image = document.createElement("img");
                     image.src = response[i].imageUrl;
