@@ -15,12 +15,15 @@ window.onload = function(){
                     const camera = document.createElement("div");
                     camera.classList.add("camera");
 
-                    const model = document.createElement("a");
+                    const model = document.createElement("h1");
                     model.textContent = response[i].name;
-                    model.style.fontSize = '2em';
-                    model.style.textDecoration ='none';
-                    model.style.color = '#000';
-                    model.href = "http://localhost:3000/images/vcam_1.jpg";
+                    
+                    // model.textContent = response[i]._id;
+                                  
+                     const link = document.createElement("a");
+                     link.textContent = "Plus d'info ici ";
+                     link.style.color = '#000';
+                     link.href = response[i]._id;
 
                     const definition = document.createElement("p");
                     definition.textContent = response[i].description;
@@ -30,18 +33,21 @@ window.onload = function(){
 
                     const image = document.createElement("img");
                     image.src = response[i].imageUrl;
-
-
+                    
+                    
                     camera.appendChild(image);
                     camera.appendChild(model);
                     camera.appendChild(definition);
                     camera.appendChild(prix);
-
+                    camera.appendChild(link);
 
                    document.querySelector(".items-container").appendChild(camera);
                    
                     console.log(response[i]);
                     console.log(response[i].name);
+                    // console.log(response[i]._id);
+                    // console.log(idCamera);
+                   console.log(link.href = response[i]._id);
                 }
             
             } else{
