@@ -1,4 +1,4 @@
-window.onload = function(){
+window.onload = () => {
 
     const req = new XMLHttpRequest();
     const Url = "http://localhost:3000/api/cameras";
@@ -18,12 +18,14 @@ window.onload = function(){
                     const model = document.createElement("h1");
                     model.textContent = response[i].name;
                     
-                    // model.textContent = response[i]._id;
+                    
                                   
                      const link = document.createElement("a");
-                     link.textContent = "Plus d'info ici ";
+                     link.textContent = "Plus d'info ici";
                      link.style.color = '#000';
-                     link.href = response[i]._id;
+                     link.href = './pages/produit.html?id=' + response[i]._id;
+                     
+                
 
                     const definition = document.createElement("p");
                     definition.textContent = response[i].description;
@@ -45,9 +47,7 @@ window.onload = function(){
                    
                     console.log(response[i]);
                     console.log(response[i].name);
-                    // console.log(response[i]._id);
-                    // console.log(idCamera);
-                   console.log(link.href = response[i]._id);
+                    
                 }
             
             } else{
