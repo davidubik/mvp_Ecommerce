@@ -18,8 +18,6 @@ window.onload = () => {
   console.log(paramsId)
 
 
-// Récupération (parse des paramètres) 
-
     
   // Construction de URL de API
 
@@ -41,32 +39,41 @@ window.onload = () => {
 
 
         const productContainer = document.querySelector('.product_container');
-        const lentille1 = document.createElement('p');
-        const lentille2 = document.createElement('p');
+        const lentilles = document.createElement('p');
         const iD = document.createElement('p');
         const name = document.createElement('h2');
         const description = document.createElement('p');
         const price = document.createElement('p');
         const imgUrl = document.createElement('img');
+
+        for(let i = 0; i < lentilles.length; i++){
+
+           lentilles.innerHTML = response.lenses[i];
+
+        }
         
-        lentille1.innerHTML = response.lenses[0];
-        lentille2.innerHTML = response.lenses[1];
+        lentilles.innerHTML = response.lenses;
         iD.innerHTML = response._id;
         name.innerHTML = response.name;
         description.innerHTML = response.description;
         price.innerHTML = response.price + '€';
         imgUrl.src = response.imageUrl;
 
-        productContainer.appendChild(name);
-        productContainer.appendChild(imgUrl);
-        productContainer.appendChild(lentille1);
-        productContainer.appendChild(lentille2)
-        productContainer.appendChild(iD);
-        productContainer.appendChild(price);
-       
 
         
 
+          
+
+        productContainer.appendChild(name);
+        productContainer.appendChild(imgUrl);
+        productContainer.appendChild(lentilles);
+        productContainer.appendChild(iD);
+        productContainer.appendChild(price);
+       
+        
+       
+        
+     
       
 
       }else{
@@ -74,11 +81,11 @@ window.onload = () => {
     }
 
   }
-
+   
   req.send();
   // Injection dans le HTML
    
-  
+  /* À faire Ajouter le(s) produit(s) à son panier, et stylisé la page */
     
 
 
