@@ -45,6 +45,11 @@ window.onload = () => {
         const description = document.createElement('p');
         const price = document.createElement('p');
         const imgUrl = document.createElement('img');
+        const buttonProduit = document.querySelector('.bouton-produit')
+        
+        
+
+
 
         for(let i = 0; i < lentilles.length; i++){
 
@@ -59,21 +64,20 @@ window.onload = () => {
         price.innerHTML = response.price + '€';
         imgUrl.src = response.imageUrl;
 
-
+        buttonProduit.addEventListener('click', (e)=>{
+          alert('Vous Allez être rediriger sur la page Panier.')
+        })
         
-
-          
-
+      
         productContainer.appendChild(name);
         productContainer.appendChild(imgUrl);
         productContainer.appendChild(lentilles);
+        productContainer.appendChild(description);
         productContainer.appendChild(iD);
         productContainer.appendChild(price);
-       
+        productContainer.appendChild(buttonProduit);
         
-       
-        
-     
+
       
 
       }else{
@@ -88,7 +92,7 @@ window.onload = () => {
   /* À faire Ajouter le(s) produit(s) à son panier, et stylisé la page */
     
 
-
+/* Créer le bouton panier sur lequel on place un eventListener avec callbacks et un localStorage */
 
 }
 
