@@ -64,8 +64,17 @@ window.onload = () => {
         price.innerHTML = response.price + '€';
         imgUrl.src = response.imageUrl;
 
+       
+        
+
         buttonProduit.addEventListener('click', (e)=>{
-          alert('Vous Allez être rediriger sur la page Panier.')
+         
+         const objetResponse = response;
+          
+        let obj = JSON.stringify(objetResponse);
+        localStorage.setItem("obj", obj);
+          
+          console.log(obj);
         })
         
       
