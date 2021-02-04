@@ -45,17 +45,43 @@ window.onload = () => {
         const description = document.createElement('p');
         const price = document.createElement('p');
         const imgUrl = document.createElement('img');
-        const buttonProduit = document.querySelector('.bouton-produit')
+        const buttonProduit = document.querySelector('.bouton-produit');
+
+       
+
+      //POUR CHAQUE LENTILLES JE CRÉER UNE BALISE OPTION
+
+
+        //MODAL
+        const modal = document.createElement('div');
+        modal.classList.add('modal');
+        const modalContent = document.createElement('div');
+        modalContent.classList.add('modal-content');
+        const close = document.createElement('span');
+        close.classList.add('close');
+        close.innerText = 'x';
+        const modalTxt = document.createElement('p');
+
+        modal.appendChild(modalContent);
+        modalContent.appendChild(close);
+        modalContent.appendChild(modalTxt);
         
         
+        
+        for(let i = 0; i < response.lenses.length; i++){
+
+          lentilles.innerHTML = response.lenses[i];
+          // const liste = document.createElement('select');
+          const option = document.createElement('option');
+          option.innerHTML = response.lenses[i];
+          // liste.appendChild(option);
+          // option.appendChild(lentilles);
+         
+
+       }
 
 
-
-        for(let i = 0; i < lentilles.length; i++){
-
-           lentilles.innerHTML = response.lenses[i];
-
-        }
+       
         
         lentilles.innerHTML = response.lenses;
         iD.innerHTML = response._id;
@@ -73,18 +99,25 @@ window.onload = () => {
           
         let obj = JSON.stringify(objetResponse);
         localStorage.setItem("obj", obj);
-          
+        modal.style.display = "block";
+        // modal.style.display = "none";
+
+       
           console.log(obj);
         })
         
-      
+       
         productContainer.appendChild(name);
         productContainer.appendChild(imgUrl);
+        // productContainer.appendChild(selectLentilles);
+        // productContainer.append(liste);
         productContainer.appendChild(lentilles);
         productContainer.appendChild(description);
         productContainer.appendChild(iD);
         productContainer.appendChild(price);
         productContainer.appendChild(buttonProduit);
+        productContainer.appendChild(modal);
+        
         
 
       
