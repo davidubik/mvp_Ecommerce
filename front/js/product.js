@@ -59,19 +59,20 @@ window.onload = () => {
          
           const option = document.createElement('option');
           option.innerHTML = response.lenses[i];
-         select.appendChild(option);
+          select.appendChild(option);
       
 
        }
 
-
+    
        
         
         
-        iD.innerHTML = response._id;
+        iD.innerHTML = `Id de la Camera : ${response._id}`;
         name.innerHTML = response.name;
         description.innerHTML = response.description;
-        price.innerHTML = response.price + '€';
+        description.style.fontStyle = 'italic';
+        price.innerHTML = 'Prix :' + ' ' + response.price + '€';
         imgUrl.src = response.imageUrl;
 
        
@@ -83,7 +84,32 @@ window.onload = () => {
           
         let obj = JSON.stringify(objetResponse);
         localStorage.setItem("obj", obj);
-       
+
+        const modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        const btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        const span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        } 
+          
        
           console.log(obj);
         })
