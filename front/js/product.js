@@ -38,14 +38,16 @@ window.onload = () => {
       console.log(Url);
 
 
-        const productContainer = document.querySelector('.product_container');
-        const iD = document.createElement('p');
-        const name = document.createElement('h2');
-        const description = document.createElement('p');
-        const price = document.createElement('p');
-        const imgUrl = document.createElement('img');
-        const buttonProduit = document.querySelector('.bouton-produit');
-        const select = document.querySelector('select');
+         const productContainer = document.querySelector('.product_container');
+         const name = document.querySelector('.name').innerText = response.name;
+         const imgUrl = document.querySelector('.img-url').src = response.imageUrl;
+         const description = document.querySelector('.description').innerText = response.description;
+         const iD = document.querySelector('.id').innerText = response._id;
+         const price = document.querySelector('.price').innerText = response.price + '€';
+         const select = document.querySelector('select');
+         const buttonProduit = document.querySelector('.bouton-produit');
+        
+        
 
        
 
@@ -56,30 +58,16 @@ window.onload = () => {
         
         for(let i = 0; i < response.lenses.length; i++){
 
-         
           const option = document.createElement('option');
           option.innerHTML = response.lenses[i];
           select.appendChild(option);
       
 
-       }
-
-    
-       
-        
-        
-        iD.innerHTML = `Id de la Camera : ${response._id}`;
-        name.innerHTML = response.name;
-        description.innerHTML = response.description;
-        description.style.fontStyle = 'italic';
-        price.innerHTML = 'Prix :' + ' ' + response.price + '€';
-        imgUrl.src = response.imageUrl;
-
-       
-        
+       }        
 
         buttonProduit.addEventListener('click', (e)=>{
          
+         window.location.href='panier.html';
          const objetResponse = response;
           
         let obj = JSON.stringify(objetResponse);
@@ -109,24 +97,11 @@ window.onload = () => {
             modal.style.display = "none";
           }
         } 
-          
+        window.location.href='panier.html';
        
           console.log(obj);
         })
-        
-       
-        productContainer.appendChild(name);
-        productContainer.appendChild(imgUrl);
-        productContainer.appendChild(description);
-        productContainer.appendChild(iD);
-        productContainer.appendChild(price);
-        productContainer.appendChild(buttonProduit);
-     
-        
-        
-
       
-
       }else{
         console.error("Statut: " + this.status);    // Si une erreur avec la requête  
     }
