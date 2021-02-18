@@ -1,9 +1,6 @@
 window.onload = () => {
 
 
-
-
-
 // Récupération de l URL (querystring) 
   let params = new URLSearchParams (window.location.search);
   
@@ -38,18 +35,15 @@ window.onload = () => {
       console.log(Url);
 
 
-         const productContainer = document.querySelector('.product_container');
-         const name = document.querySelector('.name').innerText = response.name;
-         const imgUrl = document.querySelector('.img-url').src = response.imageUrl;
-         const description = document.querySelector('.description').innerText = response.description;
-         const iD = document.querySelector('.id').innerText = response._id;
-         const price = document.querySelector('.price').innerText = response.price + '€';
+         const productContainer = document.querySelector('.product-container');
+         const produitTitre = document.querySelector('.produit-titre').innerText = response.name;
+         const produitImg = document.querySelector('.produit-img').src = response.imageUrl;
+         const produitDescription = document.querySelector('.produit-description').innerText = response.description;
+         const produitId = document.querySelector('.produit-id').innerText = `Code article : ${response._id}`;
+         const produitPrix = document.querySelector('.produit-prix').innerText = `Prix: ${response.price}€`;
          const select = document.querySelector('select');
-         const buttonProduit = document.querySelector('.bouton-produit');
+         const produitBouton = document.querySelector('.produit-bouton');
         
-        
-
-       
 
       //POUR CHAQUE LENTILLES JE CRÉER UNE BALISE OPTION
 
@@ -65,7 +59,7 @@ window.onload = () => {
 
        }        
 
-        buttonProduit.addEventListener('click', (e)=>{
+        produitBouton.addEventListener('click', (e)=>{
          
          window.location.href='panier.html';
          const objetResponse = response;
