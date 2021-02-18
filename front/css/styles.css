@@ -32,6 +32,8 @@ footer a
     color: rgb(0, 0, 0);
 }
 
+
+
 /*INDEX*/
 
 
@@ -51,28 +53,64 @@ footer a
 }
 
 
+
 /*ITEMS CONTAINER*/
 
+.items-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center ;
+    justify-content: center;
+}
 
-
+.camera h3
+{
+    text-align: center;
+}
 
 img
 {
-    width: 500px;
+    width: 350px;
     margin-top: 10%;
     margin-bottom: 2%;
     border : 2px solid #945def;
 } 
 
-.camera
+/* .camera
 {
     display: flex;
     flex-direction: column;
     align-items: center;
+} */
+
+
+
+/*PAGE PRODUIT*/
+
+
+.product-container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5%;
 }
 
-  
-/*PAGE PRODUIT*/
+.product-container img
+{
+    width: 80%;
+}
+
+/*select lentilles*/
+
+/* select
+{
+    position: absolute;
+    margin-bottom: 5%;
+    margin-top: 40%;
+} */
 
 /* The Modal (background) */
  .modal 
@@ -116,7 +154,11 @@ img
     cursor: pointer;
   } 
 
-/*FORMULAIRE PAGE PANIER*/
+
+
+/*PAGE PANIER*/
+
+/*formulaire */
 
 form
 {
