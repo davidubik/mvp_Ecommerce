@@ -89,7 +89,7 @@ img
 /*PAGE PRODUIT*/
 
 
-.product-container
+.produit-container
 {
     display: flex;
     flex-direction: column;
@@ -98,19 +98,12 @@ img
     margin-bottom: 5%;
 }
 
-.product-container img
+.produit-container img
 {
     width: 80%;
 }
 
-/*select lentilles*/
 
-/* select
-{
-    position: absolute;
-    margin-bottom: 5%;
-    margin-top: 40%;
-} */
 
 /* The Modal (background) */
  .modal 
