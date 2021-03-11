@@ -151,6 +151,28 @@ img
 
 /*PAGE PANIER*/
 
+.panier-container
+{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.img-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.txt-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 /*formulaire */
 
 form
