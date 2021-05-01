@@ -37,26 +37,26 @@
                            
                     </div>
 
-                        <form>
+                        <form> <!-- Never trust user input! -->
                             <div>
                                 <label for="name">Nom :</label>
-                                <input type="text" id="name" name="user_name">
+                                <input type="text" id="name" name="user_last_name" placeholder="Votre nom" required>
                             </div>
                             <div>
                                 <label for="prenom">Prénom :</label>
-                                <input type="text" id="prenom" name="user_name">
+                                <input type="text" id="prenom" name="user_first_name" placeholder="Votre Prénom" required>
                             </div>
                             <div>
                                 <label for="mail">E-mail :</label>
-                                <input type="email" id="mail" name="user_mail">
+                                <input type="email" id="mail" name="user_mail" placeholder="Votre Email" required>
                             </div>
                             <div>
                                 <label for="adresse">Adresse :</label>
-                                <input type="text" id="adresse">
+                                <input type="text" id="adresse" name="user_adresse" placeholder="Votre adresse" required>
                             </div>
                             <div>
-                                <label for="adresse">Ville :</label>
-                                <input type="text" id="ville">
+                                <label for="ville">Ville :</label>
+                                <input type="text" id="ville" name="user_ville" placeholder="Votre Ville" required>
                             </div>
                             <button type="submit">Envoie</button>
                     </form>      
