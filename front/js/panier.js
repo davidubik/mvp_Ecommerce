@@ -29,12 +29,44 @@ window.onload = () =>{
     const form = document.querySelector('form');
     const regexEmail = /\S+@\S+\.\S+/;
     const regexNom = /^[a-zA-Z]+$/i;
-    const regexAdresse = /^[0-9][a-zA-Z]$/;
+    const regexAdresse = /^[0-9]+ ([a-zA-Z]+ ?)+$/;
     let arrayId = [];
 
-    // const formRegexTest = () =>{
-    //     console.log(comande);
-    // }
+
+        
+
+        const formRegexTest = (contact) =>{
+            
+            if(regexNom.test(contact.prenom)){
+                console.log('ok');
+            }else {
+                alert('Merci de remplire correctement espèce d enculé !!');
+            }
+
+            if (regexEmail.test(contact.email)) {
+                console.log('Yes');
+            }else{
+                alert('Bück Dich!!');
+            }
+
+            if (regexNom.test(contact.nom)) {
+                console.log('Nom est ok');  
+            }else{
+                console.log('Fuck Off!!!');
+            }
+        
+            if(regexAdresse.test(contact.adresse)){
+                console.log('Adresse Ok.')
+            }else{
+                console.log('Adresse pas Ok');
+            }   
+
+            if (regexNom.test(contact.ville)) {
+                console.log('Ville ok');  
+            }else{
+                console.log('Tête de bite!!!');
+            }
+        }
        
 
         
@@ -45,87 +77,77 @@ window.onload = () =>{
             const data = new FormData(form);
             let responseData;
 
-                //Objet récuparation info comande 
-                    let comande = {
-                prenom :"" ,
-                nom : "",
-                adresse : "",
-                ville : "",
-                email : "",
-                products : ""
-                };
+                //Objet récuparation info contact   
+            let contact = {    
+                firstName :"" ,
+                lastName : "",
+                adress : "",
+                city : "",
+                email : ""
+            };
+
+                let products = [];
 
                 
-                //Récup de la saisie du form envoyer dans l'objet comande
-                comande.prenom = data.get('user_first_name');
-                comande.nom = data.get('user_last_name');
-                comande.adresse = data.get('user_adresse');
-                comande.email = data.get('user_mail');
-                comande.ville = data.get('user_ville');
-                console.log(comande);
+                //Récup de la saisie du form envoyer dans l'objet contact
+                contact.firstName = data.get('user_first_name');
+                contact.lastName = data.get('user_last_name');
+                contact.adress = data.get('user_adresse');
+                contact.email = data.get('user_mail');
+                contact.city = data.get('user_ville');
+                console.log(contact);
                 console.log(panier);
 
                 
-
                 //Vérification du form avec des ReGex
+                formRegexTest(contact);
 
-                if(regexNom.test(comande.prenom)){
-                    console.log('ok');
-                }else {
-                    alert('Merci de remplire correctement espèce d enculé !!');
-                }
-
-                if (regexEmail.test(comande.email)) {
-                    console.log('Yes');
-                }else{
-                    alert('Bück Dich!!');
-                }
-
-                if (regexNom.test(comande.nom)) {
-                    console.log('Nom est ok');  
-                }else{
-                    console.log('Fuck Off!!!');
-                }
-            
-                if(regexAdresse.test(comande.adresse)){
-                    console.log('Adresse Ok.')
-                }else{
-                    console.log('Adresse pas Ok');
-                }   
-
-                if (regexNom.test(comande.ville)) {
-                    console.log('Ville ok');  
-                }else{
-                    console.log('Tête de bite!!!');
-                }
                 
                 
 
-                //Parse Comande en JSON
+                //Parse contact en JSON
 
-               comandeJson = JSON.stringify(comande);
-               console.log(comandeJson);
+            //    contactJson = JSON.stringify(contact);
+            //    console.log(contactJson);
 
                for(let i = 0; i < panier.length; i++){
                 arrayId.push(panier[i].product._id);
                   
-                  
                }
-                console.log(arrayId);
 
+
+                console.log(arrayId);
+                
+               
+                 for(let i = 0; i< arrayId.length; i++){
+                    products.push(arrayId[i]); 
+                    console.log(products);
+                 }
+                
+                 console.log(products);
+
+               
+
+                 const commande = {
+                     contact : contact,
+                    products : products
+                 }
+
+                 const commandeJson = JSON.stringify(commande);
+                 console.log(commandeJson);
+                
                 
                 req.open("POST", "http://localhost:3000/api/cameras/order");
                 req.onreadystatechange = (event) => {
                     if(this.readyState === XMLHttpRequest.DONE){
-                        if(this.status === 201){//ajout JSON
-                          responseData = JSON.parse(this.responseText);                              
+                        if(this.status === 201){                             
                             }else{
                                 console.log("Status :" + this.status);
                             }
                     }
                 }
 
-                req.send(comande);
+                req.send(commandeJson); 
 
                 
         
