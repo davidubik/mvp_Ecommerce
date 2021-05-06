@@ -10,13 +10,13 @@
 
 header, footer
 {
-    background: #945def;
+    background: #033e64;
     font-size: 1.5em;
 }
  
 .nav-link
 {
-    color: #000 !important ;
+    color: whitesmoke !important ;
 }
 
 /*FOOTER*/
@@ -24,12 +24,14 @@ footer
 {
     display: flex;
     justify-content: space-around;
-     background: #945def;
+     background: #033e64;
+     margin-bottom: 0px;
+     margin-top: 20vh;
 }
 footer a
 {
     text-decoration: none !important;
-    color: rgb(0, 0, 0);
+    color: whitesmoke;
 }
 
 
@@ -52,7 +54,26 @@ footer a
  border : none;
 }
 
+.section1 h2
+{
+    color: #033e64 !important;
+}
 
+
+.txt-container a 
+{
+    background: #033e64;
+    color: whitesmoke !important;
+    width: 150px;
+    text-align: center;
+    border-radius: 200px;
+    text-decoration: none;
+}
+
+.txt-container a:hover{
+    background: #046cb1;
+    
+} 
 
 /*ITEMS CONTAINER*/
 
@@ -74,7 +95,8 @@ img
     width: 350px;
     margin-top: 10%;
     margin-bottom: 2%;
-    border : 2px solid #945def;
+    border : 3px solid #033e64;
+    border-radius: 20px;
 } 
 
 /* .camera
@@ -179,12 +201,14 @@ form
 {
     display: flex;
     flex-direction: column;
-     margin-top: 2%;
+    margin-top: 2%;
     align-items: center;
    
 }
 
-/* Page panier */
+
+
+/* Confirmation de Commande*/
 
 
 
