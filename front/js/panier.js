@@ -81,7 +81,7 @@ window.onload = () =>{
             let contact = {    
                 firstName :"" ,
                 lastName : "",
-                adress : "",
+                address : "",
                 city : "",
                 email : ""
             };
@@ -92,7 +92,7 @@ window.onload = () =>{
                 //Récup de la saisie du form envoyer dans l'objet contact
                 contact.firstName = data.get('user_first_name');
                 contact.lastName = data.get('user_last_name');
-                contact.adress = data.get('user_adresse');
+                contact.address = data.get('user_adresse');
                 contact.email = data.get('user_mail');
                 contact.city = data.get('user_ville');
                 console.log(contact);
@@ -135,19 +135,29 @@ window.onload = () =>{
 
                  const commandeJson = JSON.stringify(commande);
                  console.log(commandeJson);
-                
-                
-                req.open("POST", "http://localhost:3000/api/cameras/order");
-                req.onreadystatechange = (event) => {
-                    if(this.readyState === XMLHttpRequest.DONE){
-                        if(this.status === 201){                             
-                            }else{
-                                console.log("Status :" + this.status);
-                            }
-                    }
-                }
 
-                req.send(commandeJson); 
+                            
+                 fetch('http://localhost:3000/api/cameras/order', {
+                     method: 'POST',
+                     headers: new Headers({'content-type':'application/json'}),
+                     body: commandeJson
+                 }).then(response => {
+                     console.log(response)
+                 }).catch(err => {
+                     console.log(err)
+                 })
+                
+                // req.open("POST", "http://localhost:3000/api/cameras/order");
+                // req.onreadystatechange = (event) => {
+                //    if(this.readyState === XMLHttpRequest.DONE){
+                //        if(this.status === 201){                             
+                //            }else{
+                //                console.log("Status :" + this.status);
+                //            }
+                //    }
+                //}
+
+                //req.send(commande); 
 
                 
         
