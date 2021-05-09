@@ -47,6 +47,7 @@ window.onload = () =>{
                 console.log('Yes');
             }else{
                 alert('Bück Dich!!');
+
             }
 
             if (regexNom.test(contact.nom)) {
@@ -126,7 +127,6 @@ window.onload = () =>{
                 
                  console.log(products);
 
-               
 
                  const commande = {
                      contact : contact,
@@ -136,39 +136,43 @@ window.onload = () =>{
                  const commandeJson = JSON.stringify(commande);
                  console.log(commandeJson);
 
-                            
+                           
+
                  fetch('http://localhost:3000/api/cameras/order', {
                      method: 'POST',
                      headers: new Headers({'content-type':'application/json'}),
                      body: commandeJson
                  }).then(response => {
                      console.log(response)
+                        const responseJsonPost = response.json().then(data =>{
+        
+                           let total = 0;
+                            
+                            for(let i = 0; i< data.products.length; i++){
+                                 
+                                  let price = data.products[i].price;
+                                  total += price;
+                                  
+                                    console.log(price);
+                                  console.log(total);                                 
+                                  
+                            }
+                            console.log(data) 
+                            console.log(data.orderId);
+                        })
+                       
                  }).catch(err => {
                      console.log(err)
                  })
                 
-                // req.open("POST", "http://localhost:3000/api/cameras/order");
-                // req.onreadystatechange = (event) => {
-                //    if(this.readyState === XMLHttpRequest.DONE){
-                //        if(this.status === 201){                             
-                //            }else{
-                //                console.log("Status :" + this.status);
-                //            }
-                //    }
-                //}
-
-                //req.send(commande); 
-
-                
+                 
+                //Récupérer id commande & prix :
+                 
         
             
     });
     
     
-       
     
-     
-
-
 
 }
