@@ -1,11 +1,10 @@
 window.onload = () =>{
 
     //Récupérer le LS
-    
        localStorage.getItem('panier'); 
        const panier = JSON.parse(localStorage.getItem('panier')); 
     
-   // Inject éléments dans le html
+   // Inject éléments dans une template HTML
     const injectionEltHtml = () =>{
         for(let i = 0; i < panier.length; i++){
             
@@ -21,7 +20,7 @@ window.onload = () =>{
     }
     injectionEltHtml();
     
-   
+   //Regex pour vérifier que les champs du formulaire correspondent bien à ce qui est demandé à l'utilisateur
     const form = document.querySelector('form');
     const regexEmail = /\S+@\S+\.\S+/;
     const regexNom = /^[a-zA-Z]+$/i;
@@ -29,40 +28,40 @@ window.onload = () =>{
     let arrayId = [];
     let total = 0;
 
-        const formRegexTest = (contact) =>{//Clean message else!!!!!
+        const formRegexTest = (contact) =>{
             
             if(regexNom.test(contact.prenom)){
-                console.log('ok');
+                console.log('Prenom ok');
             }else {
-                alert('Merci de remplire correctement espèce d enculé !!');
+                alert('Merci de remplire correctement le champ.');
             }
 
             if (regexEmail.test(contact.email)) {
-                console.log('Yes');
+                console.log('Email Ok');
             }else{
-                alert('Bück Dich!!');
+                alert('Merci de remplire correctement le champ.');
 
             }
 
             if (regexNom.test(contact.nom)) {
-                console.log('Nom est ok');  
+                console.log('Nom ok');  
             }else{
-                console.log('Fuck Off!!!');
+                console.log('Merci de remplire correctement le champ.');
             }
         
             if(regexAdresse.test(contact.adresse)){
                 console.log('Adresse Ok.')
             }else{
-                console.log('Adresse pas Ok');
+                console.log('Merci de remplire correctement le champ.');
             }   
 
             if (regexNom.test(contact.ville)) {
                 console.log('Ville ok');  
             }else{
-                console.log('Tête de bite!!!');
+                console.log('Merci de remplire correctement le champ.');
             }
         }
-
+        //Fonction qui itére sur le panier de l'utilisateur, et en récupère l' ID
         const extractPanierId = (panier) =>{
 
             for(let i = 0; i < panier.length; i++){
@@ -104,12 +103,14 @@ window.onload = () =>{
                
                 console.log(arrayId);
                 
+                //Itérarion  sur le tableau des id des produits.
                  for(let i = 0; i< arrayId.length; i++){
                     products.push(arrayId[i]); 
                     console.log(products);
                  }
                  console.log(products);
 
+                 //Objet qui contiendra les données du form et le produit sélectioné.
                  const commande = {
                      contact : contact,
                     products : products
@@ -117,21 +118,24 @@ window.onload = () =>{
                  const commandeJson = JSON.stringify(commande);
                  console.log(commandeJson);
 
-                 //REQUÊTE POST
+                 //Utilisation de le method Fetch mais cette fois avec une requête POST pour envoyer les données au Serveur
                  fetch('http://localhost:3000/api/cameras/order', {
                      method: 'POST',
                      headers: new Headers({'content-type':'application/json'}),
                      body: commandeJson
                  }).then(response => {
                      console.log(response)
+                     
+                     //Fonction  pour additioner le prix de plusieurs produits.
                         const responseJsonPost = response.json().then(data =>{
-                           
                             for(let i = 0; i< data.products.length; i++){   
                                   let price = data.products[i].price;
                                   total += price;
                                   console.log(price);
                                   console.log(total);                                 
-                            } 
+                            }
+                            //Utilisation du paramètre Query string pour passer l'id et le total dans l url et permet de passer
+                            // les données d'une page à l'autre. 
                             window.location.href='confirmation.html?id=' + data.orderId + '&total=' + total;
                             console.log(data) 
                             console.log(data.orderId);
@@ -139,9 +143,7 @@ window.onload = () =>{
                         });
                  }).catch(err => {
                      console.log(err)
-                 })
-                  
-                
+                 })          
     
     });
 }

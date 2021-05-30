@@ -1,6 +1,6 @@
 window.onload = () => {
 
-
+//Utilisation du paramètre QueryString
 // Récupération de l URL (querystring) 
   let params = new URLSearchParams (window.location.search);
 
@@ -8,7 +8,19 @@ window.onload = () => {
   let paramsId = params.get('id');
   console.log(paramsId)
 
+  //Fonction qui itére sur les lentilles des apparareils, qui à chaque itération crée une nouvelle balise <option>
+  const recupLentilles = (produit, select) =>{
 
+    for(let i = 0; i < produit.lenses.length; i++){
+      const option = document.createElement('option');
+      option.innerHTML = produit.lenses[i];
+      select.appendChild(option);
+     }
+
+  }
+
+  //Utilisation de la méthode Fetch pour récupérer les données du Serveur.
+  //Injection des éléments dans une template html.
   fetch("http://localhost:3000/api/cameras/" + paramsId)
   .then((produit) => produit.json())
   .then((produit) => {
@@ -24,16 +36,12 @@ window.onload = () => {
       const select = document.querySelector('select');
 
       //Lentilles création d'un balise option.
-        for(let i = 0; i < produit.lenses.length; i++){
-             const option = document.createElement('option');
-             option.innerHTML = produit.lenses[i];
-             select.appendChild(option);
-            }
+       recupLentilles(produit, select);
             
             //EventListener sur le Bouton et LocalStorage
             produitBouton.addEventListener('click', (e)=>{
              
-            //On récupére le contenue de du produit
+            //On récupére le contenue du produit
              let panier = localStorage.getItem('panier') ? JSON.parse(localStorage.getItem('panier'))  :  []; 
              
              //On ajoute le produit au panier
