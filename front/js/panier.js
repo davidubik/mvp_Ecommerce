@@ -30,27 +30,27 @@ window.onload = () =>{
           //Txt Container
          const txtContainer = document.createElement('div');
          txtContainer.classList.add('txt-container');
-         panierContainer.append(txtContainer);
+         imgContainer.append(txtContainer);
 
          const panierDescription = document.createElement('p');
          panierDescription.classList.add('panier-description');
          panierDescription.innerText = panier[i].product.description;
-         txtContainer.append(panierDescription);
+         imgContainer.append(panierDescription);
 
          const panierId = document.createElement('p');
          panierId.classList.add('panier-id');
          panierId.innerText = `Code article : ${panier[i].product._id}`;  
-         txtContainer.append(panierId);   
+         imgContainer.append(panierId);   
 
         const panierLentille = document.createElement('p');
         panierLentille.classList.add('panier-lentille');
         panierLentille.innerText = `Lentille selectioner : ${panier[i].product.lenses}`;
-        txtContainer.append(panierLentille);
+        imgContainer.append(panierLentille);
                 
         const panierPrix = document.createElement('p');
         panierPrix.classList.add('panier-prix');
         panierPrix.innerText = `Prix : ${panier[i].product.price}€`;       
-        txtContainer.append(panierPrix);       
+        imgContainer.append(panierPrix);       
                 
             
             }
