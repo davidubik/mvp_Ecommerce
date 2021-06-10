@@ -3,22 +3,59 @@ window.onload = () =>{
     //Récupérer le LS
        localStorage.getItem('panier'); 
        const panier = JSON.parse(localStorage.getItem('panier')); 
-    
+        console.log(panier);
+
    // Inject éléments dans une template HTML
-    const injectionEltHtml = () =>{
+    const injectionEltHtml = (panier) =>{
         for(let i = 0; i < panier.length; i++){
-            
-                document.querySelector('.panier-titre').innerText = panier[i].product.name;
-                document.querySelector('.panier-img').src = panier[i].product.imageUrl; 
-                document.querySelector('.panier-description').innerText = panier[i].product.description;
-                document.querySelector('.panier-id').innerText = `Code article : ${panier[i].product._id}`;  
-                document.querySelector('.panier-lentille').innerText = `Lentille selectioner : ${panier[i].product.lenses}`;
-                document.querySelector('.panier-prix').innerText = `Prix : ${panier[i].product.price}€`;
+            //Crée les éléments en js
+        
+            //Panier Container
+          const panierContainer = document.querySelector('.panier-container');
+          //Img Container
+          const imgContainer = document.createElement('div');
+          imgContainer.classList.add('img-container');
+          panierContainer.append(imgContainer);
+
+          const panierTitre = document.createElement('h2');
+          panierTitre.classList.add('panier-titre')
+          panierTitre.innerText = panier[i].product.name;
+          imgContainer.append(panierTitre);
+
+          const panierImg = document.createElement('img');
+          panierImg.classList.add('panier-img');
+          panierImg.src = panier[i].product.imageUrl; 
+          imgContainer.append(panierImg); 
+        
+          //Txt Container
+         const txtContainer = document.createElement('div');
+         txtContainer.classList.add('txt-container');
+         panierContainer.append(txtContainer);
+
+         const panierDescription = document.createElement('p');
+         panierDescription.classList.add('panier-description');
+         panierDescription.innerText = panier[i].product.description;
+         txtContainer.append(panierDescription);
+
+         const panierId = document.createElement('p');
+         panierId.classList.add('panier-id');
+         panierId.innerText = `Code article : ${panier[i].product._id}`;  
+         txtContainer.append(panierId);   
+
+        const panierLentille = document.createElement('p');
+        panierLentille.classList.add('panier-lentille');
+        panierLentille.innerText = `Lentille selectioner : ${panier[i].product.lenses}`;
+        txtContainer.append(panierLentille);
+                
+        const panierPrix = document.createElement('p');
+        panierPrix.classList.add('panier-prix');
+        panierPrix.innerText = `Prix : ${panier[i].product.price}€`;       
+        txtContainer.append(panierPrix);       
                 
             
             }
     }
-    injectionEltHtml();
+    injectionEltHtml(panier);
     
    //Regex pour vérifier que les champs du formulaire correspondent bien à ce qui est demandé à l'utilisateur
     const form = document.querySelector('form');
@@ -147,3 +184,5 @@ window.onload = () =>{
     
     });
 }
+
+
